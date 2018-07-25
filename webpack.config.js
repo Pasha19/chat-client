@@ -1,3 +1,5 @@
+'use strict'
+
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
@@ -14,7 +16,13 @@ module.exports = {
             },
         ],
     },
+    devServer: {
+        hot: true,
+        host: process.env.HOST_LISTEN || '0.0.0.0',
+        port: process.env.PORT_LISTEN || 8000,
+    },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
