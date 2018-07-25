@@ -1,11 +1,10 @@
-import 'event-source-polyfill'
+import Vue from 'vue'
+import App from './App.vue'
 
-let es = new EventSourcePolyfill(
-    '/api/chat/listen',
-    {
-        headers: {
-            'Authorization': 'TOKEN',
-        },
-    },
-)
-es.addEventListener("message", console.log)
+const div = document.createElement('div')
+document.body.appendChild(div);
+
+new Vue({
+    el: div,
+    render: h => h(App),
+})
