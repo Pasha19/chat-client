@@ -9,5 +9,8 @@
   },
   "scripts": {
     "build": "webpack"
+  },
+  "dependencies": {
+    "event-source-polyfill": "^0.0.12"
   }
 }
