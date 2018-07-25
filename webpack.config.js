@@ -9,6 +9,7 @@ const mode = 'development'
 
 module.exports = {
     mode,
+    devtool: 'inline-source-map',
     module: {
         rules: [
             {
