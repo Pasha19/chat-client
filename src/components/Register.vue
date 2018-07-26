@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         ...mapActions(['register']),
-        submit (event) {
+        submit () {
             this.register(this.name)
         }
     }

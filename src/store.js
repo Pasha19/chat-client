@@ -21,7 +21,7 @@ export default new Vuex.Store({
             state.token = null
         },
         addMessage (state, message) {
-            state.messages.push(message.data)
+            state.messages.push(message)
         }
     },
     actions: {
@@ -66,7 +66,7 @@ export default new Vuex.Store({
             )
             es.addEventListener('message', data => {
                 let message = JSON.parse(data.data)
-                commit('addMessage', message)
+                commit('addMessage', message.data)
             })
             es.addEventListener('error', error => {
                 console.log('error', error)
@@ -74,6 +74,36 @@ export default new Vuex.Store({
             es.addEventListener('close', data => {
                 console.log('close', data)
             })
+        },
+        post ({ commit }, message) {
+            let request = fetch(
+                '/api/chat/post',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': this.state.token,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message })
+                }
+            )
+            request
+                .then(response => response.json())
+                .then(response => {
+                    let status = response.status || 'error'
+                    if (status === 'error') {
+                        let error = response.reason || 'unknown error'
+                        alert(`Error "${error}"`)
+
+                        return
+                    }
+                    let time = response.data.time
+                    commit('addMessage', {
+                        user: { name: 'me' },
+                        message,
+                        time
+                    })
+                })
         }
     }
 })
