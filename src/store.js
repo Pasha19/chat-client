@@ -20,7 +20,7 @@ export default new Vuex.Store({
         delToken (state) {
             state.token = null
         },
-        addMessage(state, message) {
+        addMessage (state, message) {
             state.messages.push(message.data)
         }
     },
@@ -55,14 +55,14 @@ export default new Vuex.Store({
             if (es !== null) {
                 return
             }
-
+            /* global EventSourcePolyfill */
             es = new EventSourcePolyfill(
                 '/api/chat/listen',
                 {
                     headers: {
-                        'Authorization': this.state.token,
-                    },
-                },
+                        'Authorization': this.state.token
+                    }
+                }
             )
             es.addEventListener('message', data => {
                 let message = JSON.parse(data.data)
