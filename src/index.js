@@ -10,11 +10,11 @@ Vue.use(VueRouter)
 const routes = [
     { path: '', component: Home },
     { path: '/foo', component: Foo },
-    { path: '/bar', component: Bar },
+    { path: '/bar', component: Bar }
 ]
 const router = new VueRouter({
     routes,
-    mode: 'history',
+    mode: 'history'
 })
 
 const div = document.createElement('div')

@@ -6,7 +6,7 @@
             <router-link to="/bar">Bar</router-link>
         </div>
         <div>
-            <router-view></router-view>
+            <router-view/>
         </div>
     </div>
 </template>
