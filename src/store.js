@@ -1,14 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import 'event-source-polyfill'
 
 Vue.use(Vuex)
 
 // const debug = process.env.NODE_ENV !== 'production'
 let token = localStorage.getItem('auth_token')
+let es = null
 
 export default new Vuex.Store({
     state: {
-        token
+        token,
+        messages: []
     },
     mutations: {
         setToken (state, payload) {
@@ -16,6 +19,9 @@ export default new Vuex.Store({
         },
         delToken (state) {
             state.token = null
+        },
+        addMessage(state, message) {
+            state.messages.push(message.data)
         }
     },
     actions: {
@@ -44,6 +50,30 @@ export default new Vuex.Store({
                     localStorage.setItem('auth_token', token)
                     commit('setToken', token)
                 })
+        },
+        listen ({ commit }) {
+            if (es !== null) {
+                return
+            }
+
+            es = new EventSourcePolyfill(
+                '/api/chat/listen',
+                {
+                    headers: {
+                        'Authorization': this.state.token,
+                    },
+                },
+            )
+            es.addEventListener('message', data => {
+                let message = JSON.parse(data.data)
+                commit('addMessage', message)
+            })
+            es.addEventListener('error', error => {
+                console.log('error', error)
+            })
+            es.addEventListener('close', data => {
+                console.log('close', data)
+            })
         }
     }
 })
