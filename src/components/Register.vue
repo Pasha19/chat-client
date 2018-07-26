@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
     data () {
         return {
@@ -19,8 +21,9 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['register']),
         submit (event) {
-            this.$store.dispatch('register', this.name)
+            this.register(this.name)
         }
     }
 }
