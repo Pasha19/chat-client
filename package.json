@@ -28,6 +28,7 @@
   "dependencies": {
     "event-source-polyfill": "^0.0.12",
     "vue": "^2.5.16",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   }
 }
