@@ -15,12 +15,12 @@
 export default {
     data () {
         return {
-            name: 'test'
+            name: ''
         }
     },
     methods: {
         submit (event) {
-            console.log(this.name)
+            this.$store.dispatch('register', this.name)
         }
     }
 }
