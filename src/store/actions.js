@@ -38,7 +38,7 @@ export const listen = ({ commit, state }) => {
         process.env.API + '/api/chat/listen',
         {
             headers: {
-                'Authorization': state.token
+                'Authorization': `Bearer ${state.token}`
             },
             heartbeatTimeout: 18000000
         }
@@ -61,7 +61,7 @@ export const post = ({ commit, state }, message) => {
         {
             method: 'POST',
             headers: {
-                'Authorization': state.token,
+                'Authorization': `Bearer ${state.token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ message })
