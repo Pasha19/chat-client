@@ -40,7 +40,6 @@ export const listen = ({ commit, state }) => {
             headers: {
                 'Authorization': state.token
             },
-            withCredentials: true,
             heartbeatTimeout: 18000000
         }
     )
