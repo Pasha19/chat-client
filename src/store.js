@@ -27,7 +27,7 @@ export default new Vuex.Store({
     actions: {
         register ({ commit }, name) {
             let request = fetch(
-                '/api/register',
+                process.env.API + '/api/register',
                 {
                     method: 'POST',
                     headers: {
@@ -57,11 +57,12 @@ export default new Vuex.Store({
             }
             /* global EventSourcePolyfill */
             es = new EventSourcePolyfill(
-                '/api/chat/listen',
+                process.env.API + '/api/chat/listen',
                 {
                     headers: {
                         'Authorization': this.state.token
-                    }
+                    },
+                    withCredentials: true
                 }
             )
             es.addEventListener('message', data => {
@@ -77,7 +78,7 @@ export default new Vuex.Store({
         },
         post ({ commit }, message) {
             let request = fetch(
-                '/api/chat/post',
+                process.env.API + '/api/chat/post',
                 {
                     method: 'POST',
                     headers: {

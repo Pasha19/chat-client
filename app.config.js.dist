@@ -1,0 +1,7 @@
+'use strict'
+
+module.exports = {
+    host: '127.0.0.1',
+    post: 3000,
+    api: 'http://127.0.0.1:8000',
+}
