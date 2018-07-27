@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form @submit="submit">
+        <form @submit.prevent="submit">
             <input
                 v-model="name"
                 type="text"

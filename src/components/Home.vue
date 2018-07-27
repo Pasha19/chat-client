@@ -5,7 +5,7 @@
                 v-for="(message, i) in messages"
                 :key="i">{{ message.user.name }}: {{ message.message }} ({{ message.time }})</li>
         </ul>
-        <form @submit="submit">
+        <form @submit.prevent="submit">
             <input
                 v-model="newMessage"
                 type="text"
