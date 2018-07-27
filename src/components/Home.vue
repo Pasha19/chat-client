@@ -26,10 +26,10 @@ export default {
     },
     computed: mapState(['messages']),
     created () {
-        this.$store.dispatch('listen')
+        this.listen()
     },
     methods: {
-        ...mapActions(['post']),
+        ...mapActions(['post', 'listen']),
         submit () {
             this.post(this.newMessage)
         }
