@@ -10,7 +10,7 @@ const routes = [
     {
         path: '',
         component: Home,
-        beforeEnter: (to, from, next) => {
+        beforeEnter (to, from, next) {
             if (store.state.token === null) {
                 next('/register')
 
