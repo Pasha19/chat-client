@@ -9,7 +9,7 @@ const mode = 'development'
 
 module.exports = {
     mode,
-    devtool: 'inline-source-map',
+    devtool: 'eval-source-map',
     module: {
         rules: [
             {
@@ -20,12 +20,13 @@ module.exports = {
     },
     devServer: {
         hot: true,
+        overlay: true,
         host: process.env.HOST_LISTEN || '0.0.0.0',
         port: process.env.PORT_LISTEN || 8000,
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        // new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
