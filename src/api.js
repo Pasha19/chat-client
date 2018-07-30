@@ -11,10 +11,6 @@ export default class {
         this.auth = token
     }
 
-    getAuth () {
-        return this.auth
-    }
-
     register (name, onSuccess) {
         fetch(
             this.api + '/register',
