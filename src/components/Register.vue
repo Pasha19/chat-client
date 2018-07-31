@@ -23,7 +23,7 @@ export default {
     methods: {
         ...mapActions(['register']),
         submit () {
-            this.register(this.name)
+            this.register(this.name).then(() => this.$router.push('/'))
         }
     }
 }

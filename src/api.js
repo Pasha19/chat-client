@@ -12,7 +12,7 @@ export default class {
     }
 
     register (name, onSuccess) {
-        fetch(
+        return fetch(
             this.api + '/register',
             {
                 method: 'POST',
@@ -26,12 +26,12 @@ export default class {
             .then(response => this._parseResponse(response, onSuccess))
     }
 
-    post (message, onSuccess) {
+    post (message) {
         if (this.auth === null) {
             throw new Error('Auth required')
         }
 
-        fetch(
+        return fetch(
             this.api + '/chat/post',
             {
                 method: 'POST',
@@ -43,7 +43,7 @@ export default class {
             }
         )
             .then(response => response.json())
-            .then(response => this._parseResponse(response, onSuccess))
+            .then(response => this._parseResponse(response))
     }
 
     listen (onMessage) {
@@ -77,14 +77,15 @@ export default class {
         })
     }
 
-    _parseResponse (response, onSuccess) {
+    _parseResponse (response) {
         let status = response.status || 'error'
         if (status === 'error') {
             let error = response.reason || 'unknown error'
             alert(`Error "${error}"`)
 
-            return
+            return null
         }
-        onSuccess(response.data)
+
+        return response.data
     }
 }
