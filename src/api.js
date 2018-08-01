@@ -47,10 +47,7 @@ export default class {
     }
 
     listen (onMessage) {
-        if (this.es !== null) {
-            this.es.close()
-            this.es = null
-        }
+        this.close()
 
         if (this.auth === null) {
             throw new Error('Auth required')
@@ -75,6 +72,13 @@ export default class {
         this.es.addEventListener('close', data => {
             console.log('close', data)
         })
+    }
+
+    close () {
+        if (this.es !== null) {
+            this.es.close()
+            this.es = null
+        }
     }
 
     _parseResponse (response) {

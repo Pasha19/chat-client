@@ -17,6 +17,10 @@ const routes = [
                 return
             }
             next()
+        },
+        beforeRouteLeave (to, from, next) {
+            store.dispatch('close')
+            next()
         }
     },
     { path: '/register', component: Register }

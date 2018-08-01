@@ -15,11 +15,12 @@ export default (api) => {
         post ({ commit, state }, message) {
             api.post(message)
                 .then(data => commit('addMessage', {
-                    user: { name: 'me' },
+                    user: state.user,
                     message,
                     time: data.time
                 })
                 )
-        }
+        },
+        close: api.close
     }
 }

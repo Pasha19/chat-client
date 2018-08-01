@@ -1,11 +1,22 @@
 <template>
     <div>
         <div>
-            <router-link to="/">Home</router-link>
-            <router-link to="/register">Register</router-link>
+            <div v-if="user !== null">You: {{ user.name }}</div>
+            <router-link
+                v-if="$route.path !== '/' && user !== null"
+                to="/">Home</router-link>
+            <router-link
+                v-if="$route.path !== '/register'"
+                to="/register">Register</router-link>
         </div>
-        <div>
-            <router-view/>
-        </div>
+        <router-view/>
     </div>
 </template>
+
+<script>
+import { mapState } from 'vuex'
+
+export default {
+    computed: mapState(['user'])
+}
+</script>

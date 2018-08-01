@@ -6,11 +6,13 @@ import Api from '../api'
 
 Vue.use(Vuex)
 
-const token = localStorage.getItem('auth_token')
 const state = {
-    token,
+    token: null,
+    user: {},
     messages: []
 }
+
+const token = localStorage.getItem('auth_token')
 const api = new Api(process.env.API)
 api.setAuth(token)
 
@@ -20,6 +22,8 @@ const store = new Vuex.Store({
     actions: actions(api),
     strict: process.env.NODE_ENV !== 'production'
 })
+
+store.commit('setToken', token)
 
 if (module.hot) {
     module.hot.accept([
