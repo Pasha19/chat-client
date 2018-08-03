@@ -20,6 +20,10 @@ module.exports = (env) => {
                 },
             ],
         },
+        entry: {
+            'event-source': 'event-source-polyfill',
+            main: './src/index.js'
+        },
         plugins: [
             new HtmlWebpackPlugin({
                 hash: true,
