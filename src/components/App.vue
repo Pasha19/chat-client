@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <div v-if="user !== null">You: {{ user.name }}</div>
+            <div class="current-user" v-if="user !== null">You: {{ user.name }}</div>
             <router-link
                 v-if="$route.path !== '/' && user !== null"
                 to="/">Home</router-link>
@@ -20,3 +20,9 @@ export default {
     computed: mapState(['user'])
 }
 </script>
+
+<style>
+    .current-user {
+        text-decoration: underline;
+    }
+</style>

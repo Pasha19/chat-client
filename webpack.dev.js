@@ -10,12 +10,19 @@ config.port = config.port || 3000
 config.api = config.api || `http://${config.host}:${config.port}`
 
 module.exports = merge(common('development'), {
-    devtool: 'eval-source-map',
     devServer: {
         hot: true,
         overlay: true,
         host: config.host,
         port: config.port,
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: 'vue-loader',
+            },
+        ],
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
