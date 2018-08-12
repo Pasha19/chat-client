@@ -1,17 +1,8 @@
-<template>
-    <div>
-        <form @submit.prevent="submit">
-            <input
-                v-model="name"
-                type="text"
-                placeholder="name"
-            >
-            <input
-                type="submit"
-                value="Register"
-            >
-        </form>
-    </div>
+<template lang="pug">
+    div
+        form(@submit.prevent="submit")
+            input(v-model="name", type="text", placeholder="name")
+            input(type="submit", value="Register")
 </template>
 
 <script>

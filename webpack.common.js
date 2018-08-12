@@ -23,6 +23,10 @@ module.exports = (env) => {
                     use: 'vue-loader',
                 },
                 {
+                    test: /\.pug/,
+                    loader: 'pug-plain-loader'
+                },
+                {
                     test: /\.css$/,
                     use: [
                         devmode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
