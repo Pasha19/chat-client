@@ -1,9 +1,9 @@
 <template lang="pug">
-    .text-center.mt-5.mx-auto(:class="$style['sign-in']")
+    .text-center.mx-auto(:class="$style['sign-in']")
         h1.h3.mb-3.font-weight-normal Sign in
         b-form(@submit.prevent="submit")
-            b-form-input.mb-3(v-model="name", type="text", placeholder="Name", required)
-            b-button(type="submit", variant="primary", block=true) Sign in
+            b-form-input.mb-3(v-model="name" type="text" placeholder="Name" required)
+            b-button(type="submit" variant="primary" block=true) Sign in
 </template>
 
 <script>
