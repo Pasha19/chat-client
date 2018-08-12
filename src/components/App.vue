@@ -20,6 +20,7 @@ import bCollapse from 'bootstrap-vue/src/components/collapse/collapse'
 import bNavbarNav from 'bootstrap-vue/src/components/navbar/navbar-nav'
 import bNavItem from 'bootstrap-vue/src/components/nav/nav-item'
 import bNavText from 'bootstrap-vue/src/components/nav/nav-text'
+import '../bootstrap.scss'
 
 export default {
     components: {
