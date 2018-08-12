@@ -3,14 +3,19 @@
         <ul>
             <li
                 v-for="(message, i) in messages"
-                :key="i">{{ message.user.uid === user.uid ? 'me' : message.user.name }}: {{ message.message }} ({{ message.time }})</li>
+                :key="i"
+            >{{ message.user.uid === user.uid ? 'me' : message.user.name }}: {{ message.message }} ({{ message.time }})</li>
         </ul>
         <form @submit.prevent="submit">
             <input
                 v-model="newMessage"
                 type="text"
-                placeholder="Message">
-            <input type="submit">
+                placeholder="Message"
+            >
+            <input
+                type="submit"
+                value="Send"
+            >
         </form>
     </div>
 </template>

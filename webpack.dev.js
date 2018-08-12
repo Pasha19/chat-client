@@ -16,14 +16,6 @@ module.exports = merge(common('development'), {
         host: config.host,
         port: config.port,
     },
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: 'vue-loader',
-            },
-        ],
-    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
     ],

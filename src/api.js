@@ -1,3 +1,5 @@
+import 'event-source-polyfill'
+
 export default class {
     constructor (api) {
         this.api = api + '/api'

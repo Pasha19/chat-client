@@ -4,9 +4,12 @@
             <input
                 v-model="name"
                 type="text"
-                placeholder="name">
+                placeholder="name"
+            >
             <input
-                type="submit">
+                type="submit"
+                value="Register"
+            >
         </form>
     </div>
 </template>

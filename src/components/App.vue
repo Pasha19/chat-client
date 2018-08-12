@@ -1,15 +1,20 @@
 <template>
     <div>
         <div>
-            <div class="current-user" v-if="user !== null">You: {{ user.name }}</div>
+            <div
+                v-if="user !== null"
+                class="current-user"
+            >You: {{ user.name }}</div>
             <router-link
                 v-if="$route.path !== '/' && user !== null"
-                to="/">Home</router-link>
+                to="/"
+            >Home</router-link>
             <router-link
                 v-if="$route.path !== '/register'"
-                to="/register">Register</router-link>
+                to="/register"
+            >Register</router-link>
         </div>
-        <router-view/>
+        <router-view />
     </div>
 </template>
 
