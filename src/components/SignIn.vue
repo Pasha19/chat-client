@@ -8,8 +8,16 @@
 
 <script>
 import { mapActions } from 'vuex'
+import bForm from 'bootstrap-vue/src/components/form/form'
+import bFormInput from 'bootstrap-vue/src/components/form-input/form-input'
+import bButton from 'bootstrap-vue/src/components/button/button'
 
 export default {
+    components: {
+        'b-form': bForm,
+        'b-form-input': bFormInput,
+        'b-button': bButton
+    },
     data () {
         return {
             name: ''

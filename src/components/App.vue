@@ -13,8 +13,24 @@
 
 <script>
 import { mapState } from 'vuex'
+import bNavBar from 'bootstrap-vue/src/components/navbar/navbar'
+import bNavBarToggle from 'bootstrap-vue/src/components/navbar/navbar-toggle'
+import bNavBarBrand from 'bootstrap-vue/src/components/navbar/navbar-brand'
+import bCollapse from 'bootstrap-vue/src/components/collapse/collapse'
+import bNavbarNav from 'bootstrap-vue/src/components/navbar/navbar-nav'
+import bNavItem from 'bootstrap-vue/src/components/nav/nav-item'
+import bNavText from 'bootstrap-vue/src/components/nav/nav-text'
 
 export default {
+    components: {
+        'b-navbar': bNavBar,
+        'b-navbar-toggle': bNavBarToggle,
+        'b-navbar-brand': bNavBarBrand,
+        'b-collapse': bCollapse,
+        'b-navbar-nav': bNavbarNav,
+        'b-nav-item': bNavItem,
+        'b-nav-text': bNavText
+    },
     computed: mapState(['user'])
 }
 </script>

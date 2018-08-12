@@ -11,8 +11,22 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import bContainer from 'bootstrap-vue/src/components/layout/container'
+import bListGroup from 'bootstrap-vue/src/components/list-group/list-group'
+import bListGroupItem from 'bootstrap-vue/src/components/list-group/list-group-item'
+import bForm from 'bootstrap-vue/src/components/form/form'
+import bFormInput from 'bootstrap-vue/src/components/form-input/form-input'
+import bButton from 'bootstrap-vue/src/components/button/button'
 
 export default {
+    components: {
+        'b-container': bContainer,
+        'b-list-group': bListGroup,
+        'b-list-group-item': bListGroupItem,
+        'b-form': bForm,
+        'b-form-input': bFormInput,
+        'b-button': bButton
+    },
     data () {
         return {
             newMessage: '',
