@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from './components/Home.vue'
-import Register from './components/Register.vue'
+import Chat from './components/Chat.vue'
+import SignIn from './components/SignIn.vue'
 import store from './store'
 
 Vue.use(VueRouter)
@@ -9,10 +9,11 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '',
-        component: Home,
+        name: 'chat',
+        component: Chat,
         beforeEnter (to, from, next) {
             if (store.state.token === null) {
-                next('/register')
+                next({ name: 'sign-in' })
 
                 return
             }
@@ -23,7 +24,11 @@ const routes = [
             next()
         }
     },
-    { path: '/register', component: Register }
+    {
+        path: '/sign-in',
+        name: 'sign-in',
+        component: SignIn
+    }
 ]
 
 export default new VueRouter({

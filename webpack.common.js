@@ -3,7 +3,7 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
-var MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const config = require('./app.config.js') || {}
 
 config.host = config.host || '127.0.0.1'
@@ -28,9 +28,32 @@ module.exports = (env) => {
                 },
                 {
                     test: /\.css$/,
-                    use: [
-                        devmode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
-                        { loader: 'css-loader', options: { sourceMap: true } },
+                    oneOf: [
+                        {
+                            resourceQuery: /module/,
+                            use: [
+                                devmode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+                                {
+                                    loader: 'css-loader',
+                                    options: {
+                                        sourceMap: true,
+                                        modules: true,
+                                        localIdentName: '[local]_[hash:base64:8]',
+                                    },
+                                },
+                            ],
+                        },
+                        {
+                            use: [
+                                devmode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+                                {
+                                    loader: 'css-loader',
+                                    options: {
+                                        sourceMap: true,
+                                    },
+                                },
+                            ],
+                        },
                     ],
                 },
             ],
@@ -40,6 +63,7 @@ module.exports = (env) => {
                 hash: true,
                 title: 'SSE chat',
                 favicon: 'src/favicon.ico',
+                template: 'src/index.html'
             }),
             new webpack.DefinePlugin({
                 'process.env': {

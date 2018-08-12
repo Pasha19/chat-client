@@ -14,7 +14,14 @@ module.exports = merge(common('production'), {
                 parallel: true,
                 sourceMap: true,
             }),
-            new OptimizeCSSAssetsPlugin({cssProcessorOptions: { map: { inline: false, annotation: true } } }),
+            new OptimizeCSSAssetsPlugin({
+                cssProcessorOptions: {
+                    map: {
+                        inline: false,
+                        annotation: true,
+                    },
+                },
+            }),
         ],
     },
     plugins: [
