@@ -10,7 +10,7 @@ export default (api) => {
                 })
         },
         listen ({ commit, state }) {
-            api.listen(message => commit('addMessage', message.data))
+            api.listen(message => commit('addMessage', message))
         },
         post ({ commit, state }, message) {
             api.post(message)
@@ -18,8 +18,7 @@ export default (api) => {
                     user: state.user,
                     message,
                     time: data.time
-                })
-                )
+                }))
         },
         close: api.close
     }

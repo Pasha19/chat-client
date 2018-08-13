@@ -63,8 +63,13 @@ export default class {
                 heartbeatTimeout: 18000000 // Max allowed in EventSourcePolyfill
             }
         )
-        this.es.addEventListener('message', data => {
-            onMessage(JSON.parse(data.data))
+        this.es.addEventListener('post', data => {
+            const message = JSON.parse(data.data)
+            if ('status' in message && message.status === 'success') {
+                onMessage(message.data)
+            } else {
+                console.log('error', data)
+            }
         })
         this.es.addEventListener('error', error => {
             console.log('error', error)
